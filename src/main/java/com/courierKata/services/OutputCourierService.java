@@ -3,6 +3,7 @@ package com.courierKata.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.courierKata.Util.Constants;
 import com.courierKata.interfaces.IOutputCourierService;
 import com.courierKata.models.OutputCourier;
 import com.courierKata.models.Parcel;
@@ -20,7 +21,7 @@ public class OutputCourierService implements IOutputCourierService {
 		}
 		outputCourier.setParcels(parcelsToOutput);
 		
-		totalCostToOutput = speedyShipping ? totalCostToOutput*2 : totalCostToOutput;
+		totalCostToOutput = speedyShipping ? totalCostToOutput* Constants.ParcelSpeedyShippingChangerRate : totalCostToOutput;
 		outputCourier.setTotalCost(totalCostToOutput);
 		outputCourier.setSpeedyShipping(speedyShipping);
 		

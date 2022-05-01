@@ -38,14 +38,29 @@ class ParcelServiceTest {
 	void testCreateParcel_ForXL() {
 	ParcelService parcelService = new ParcelService();
 	Parcel parcel = new Parcel();
-	parcel = parcelService.CreateParcel(100, 2, 2,100);
+	parcel = parcelService.CreateParcel(100, 2, 2,49);
 	assertEquals(ParcelType.XL,parcel.getType(),"Parcel type test failled");
 	assertEquals(25D, parcel.getBaseCost(),"BaseCost test failled");
 	}
 	
 	@Test
-	void testExtraWeightCostCalculator() {
-		assertEquals(10,ParcelService.extraWeightCostCalculator(10, 15));
+	void testCreateParcel_ForHeavy() {
+	ParcelService parcelService = new ParcelService();
+	Parcel parcel = new Parcel();
+	parcel = parcelService.CreateParcel(100, 2, 2,59);
+	assertEquals(ParcelType.HeavyParcel,parcel.getType(),"Parcel type test failled");
+	assertEquals(50D, parcel.getBaseCost(),"BaseCost test failled");
 	}
-
+	
+	@Test
+	void testExtraWeightCostCalculator() {
+		assertEquals(5,ParcelService.extraWeightCostCalculator(10, 15));
+	}
+	
+	@Test
+	void testParcelSpeedyShippingCostCalculator() {
+		assertEquals(10,ParcelService.parcelSpeedyShippingCostCalculator(5D));
+	}
+	
+	
 }

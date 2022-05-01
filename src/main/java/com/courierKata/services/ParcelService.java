@@ -10,7 +10,17 @@ public class ParcelService implements IParcelService {
 	@Override
 	public Parcel CreateParcel(Integer width, Integer height, Integer length, Integer weightKg) {
 		Parcel currentParcel = new Parcel();
-		if (width < 10 && height < 10 && length < 10) {
+		if (weightKg > Constants.HeavyParcelWeightLimit) {
+			currentParcel.setWidthCm(width);
+			currentParcel.setHeightCm(height);
+			currentParcel.setLengthCm(length);
+			currentParcel.setType(ParcelType.HeavyParcel);
+			currentParcel.setBaseCost(Constants.HeavyParcelBaseCost);
+			currentParcel.setWeightKg(weightKg);
+			currentParcel.setExtraWeightCost(extraWeightCostCalculator(Constants.HeavyParcelWeightLimit, weightKg));
+			currentParcel.setParcelTotalCost(currentParcel.getBaseCost() + currentParcel.getExtraWeightCost());
+			currentParcel.setParcelSpeedyShippingCost(parcelSpeedyShippingCostCalculator(currentParcel.getParcelTotalCost()));
+		} else 	if (width < 10 && height < 10 && length < 10) {
 			currentParcel.setWidthCm(width);
 			currentParcel.setHeightCm(height);
 			currentParcel.setLengthCm(length);
@@ -19,7 +29,7 @@ public class ParcelService implements IParcelService {
 			currentParcel.setWeightKg(weightKg);
 			currentParcel.setExtraWeightCost(extraWeightCostCalculator(Constants.SmallParcelWeightLimit, weightKg));
 			currentParcel.setParcelTotalCost(currentParcel.getBaseCost() + currentParcel.getExtraWeightCost());
-		
+			currentParcel.setParcelSpeedyShippingCost(parcelSpeedyShippingCostCalculator(currentParcel.getParcelTotalCost()));
 		} else if (width < 50 && height < 50 && length < 50) {
 			currentParcel.setWidthCm(width);
 			currentParcel.setHeightCm(height);
@@ -29,7 +39,7 @@ public class ParcelService implements IParcelService {
 			currentParcel.setWeightKg(weightKg);
 			currentParcel.setExtraWeightCost(extraWeightCostCalculator(Constants.MediumParcelWeightLimit, weightKg));
 			currentParcel.setParcelTotalCost(currentParcel.getBaseCost() + currentParcel.getExtraWeightCost());
-			
+			currentParcel.setParcelSpeedyShippingCost(parcelSpeedyShippingCostCalculator(currentParcel.getParcelTotalCost()));
 		} else if (width < 100 && height < 100 && length < 100) {
 			currentParcel.setWidthCm(width);
 			currentParcel.setHeightCm(height);
@@ -39,7 +49,7 @@ public class ParcelService implements IParcelService {
 			currentParcel.setWeightKg(weightKg);
 			currentParcel.setExtraWeightCost(extraWeightCostCalculator(Constants.LargeParcelWeightLimit, weightKg));
 			currentParcel.setParcelTotalCost(currentParcel.getBaseCost() + currentParcel.getExtraWeightCost());
-
+			currentParcel.setParcelSpeedyShippingCost(parcelSpeedyShippingCostCalculator(currentParcel.getParcelTotalCost()));
 		} else  {
 			currentParcel.setWidthCm(width);
 			currentParcel.setHeightCm(height);
@@ -49,7 +59,7 @@ public class ParcelService implements IParcelService {
 			currentParcel.setWeightKg(weightKg);
 			currentParcel.setExtraWeightCost(extraWeightCostCalculator(Constants.XLParcelWeightLimit, weightKg));
 			currentParcel.setParcelTotalCost(currentParcel.getBaseCost() + currentParcel.getExtraWeightCost());
-
+			currentParcel.setParcelSpeedyShippingCost(parcelSpeedyShippingCostCalculator(currentParcel.getParcelTotalCost()));
 		} 
 		return currentParcel;
 	}
@@ -60,5 +70,9 @@ public class ParcelService implements IParcelService {
 			extraWeightCost = Constants.OverPricePerKg * (actualWeight - limit);
 		}
 		return extraWeightCost;
+	}
+	
+	public static Double parcelSpeedyShippingCostCalculator(Double parcelTotalCost) {
+		return (parcelTotalCost * Constants.ParcelSpeedyShippingChangerRate) - parcelTotalCost;
 	}
 }

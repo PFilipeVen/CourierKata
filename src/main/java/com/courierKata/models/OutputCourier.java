@@ -28,16 +28,21 @@ public class OutputCourier {
 	public void setSpeedyShipping(Boolean speedyShipping) {
 		SpeedyShipping = speedyShipping;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
+		int index = 0;
+		str.append("********************PARSEL INFO********************\r\n");
+		
 		for (Parcel parcel : parcels) {
-			if (SpeedyShipping) {
-				str.append("Parcel cost: " + parcel.getBaseCost() + ", Parcel Type: " + parcel.getType() +".SpeedyShipping is ON! you pay more:"+ parcel.getBaseCost()+"\r\n");
-			} else {
-				str.append("Parcel cost: " + parcel.getBaseCost() + ", Parcel Type: " + parcel.getType() +".\r\n");
-			}
+			index+=1;
+			str.append("Parcel n: "+ index +"\t\t Parcel Type: " + parcel.getType() + "\t height: " + parcel.getHeightCm() + "\t length: " + parcel.getLengthCm() + "\t width: " + parcel.getWidthCm() + "\t weight: " + parcel.getWeightKg()  + "\r\n");
+			str.append("Parcel cost: " + parcel.getBaseCost() + "\t extraweight cost: "+parcel.getExtraWeightCost() + "\t\t totalParcel cost:" + parcel.getParcelTotalCost() + "\r\n");
+			if (SpeedyShipping) {	
+				  str.append("SpeedyShipping: " + SpeedyShipping + "\t shipping cost added : "+ parcel.getParcelSpeedyShippingCost()+"\r\n");
+			} 
+			str.append("***************************************************\r\n");
 		}
 		str.append("Total Cost: " + totalCost);
 		return str.toString();

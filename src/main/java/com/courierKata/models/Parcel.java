@@ -8,9 +8,10 @@ public class Parcel {
 	 private Integer heightCm;
 	 private Double baseCost ;
 	 private ParcelType type;
-     public Integer weightKg;
-     public Double extraWeightCost;
-     private Double parcelTotalCost ;
+     private Integer weightKg;
+     private Double extraWeightCost;
+     private Double parcelTotalCost;
+     private Double parcelSpeedyShippingCost;
      
 	public Integer getLengthCm() {
 		return lengthCm;
@@ -60,5 +61,10 @@ public class Parcel {
 	public void setParcelTotalCost(Double parcelTotalCost) {
 		this.parcelTotalCost = parcelTotalCost;
 	}
-	
+	public Double getParcelSpeedyShippingCost() {
+		return parcelSpeedyShippingCost;
+	}
+	public void setParcelSpeedyShippingCost(Double parcelSpeedyShippingCost) {
+		this.parcelSpeedyShippingCost = parcelSpeedyShippingCost;
+	}	
 }

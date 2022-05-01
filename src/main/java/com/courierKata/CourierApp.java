@@ -18,7 +18,7 @@ public class CourierApp {
 		parcels.add(parcelService.CreateParcel(10, 3, 20,15));
 		parcels.add(parcelService.CreateParcel(170, 5, 2,5));
 		parcels.add(parcelService.CreateParcel(7, 2, 2,3));
-		parcels.add(parcelService.CreateParcel(50, 67, 5,20));
+		parcels.add(parcelService.CreateParcel(50, 67, 5,51));
 		
 		OutputCourierService outputCourierService = new OutputCourierService();
 		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,true);

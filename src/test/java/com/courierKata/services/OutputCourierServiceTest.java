@@ -11,7 +11,8 @@ import com.courierKata.models.OutputCourier;
 import com.courierKata.models.Parcel;
 
 class OutputCourierServiceTest {
-
+	
+	
 
 	@Test
 	void testCreateOutputCourier_AllCombined_TotalCost_with_SpeedyShipping() {
@@ -22,11 +23,12 @@ class OutputCourierServiceTest {
 		parcels.add(parcelService.CreateParcel(1, 1, 1,3));
 		parcels.add(parcelService.CreateParcel(25, 25, 2,10));
 		parcels.add(parcelService.CreateParcel(88, 2, 2,30));
-		parcels.add(parcelService.CreateParcel(110, 67, 5,100));
+		parcels.add(parcelService.CreateParcel(110, 67, 5,40));
+		parcels.add(parcelService.CreateParcel(1, 2, 3,100));
 		OutputCourierService outputCourierService = new OutputCourierService();
 		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,true);
 		
-		assertEquals(594, outputCourier.getTotalCost());		
+		assertEquals(428, outputCourier.getTotalCost());		
 	}
 	
 	@Test
@@ -42,7 +44,7 @@ class OutputCourierServiceTest {
 		OutputCourierService outputCourierService = new OutputCourierService();
 		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,false);
 		
-		assertEquals(297, outputCourier.getTotalCost());	
+		assertEquals(159, outputCourier.getTotalCost());	
 	}
 	
 	@Test
@@ -58,7 +60,7 @@ class OutputCourierServiceTest {
 		OutputCourierService outputCourierService = new OutputCourierService();
 		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,true);
 		
-		assertEquals(52, outputCourier.getTotalCost());	
+		assertEquals(38, outputCourier.getTotalCost());	
 	}
 	
 	@Test
@@ -74,6 +76,7 @@ class OutputCourierServiceTest {
 		OutputCourierService outputCourierService = new OutputCourierService();
 		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,false);
 		
-		assertEquals(26, outputCourier.getTotalCost());	
+		assertEquals(19, outputCourier.getTotalCost());	
 	}
+	
 }
