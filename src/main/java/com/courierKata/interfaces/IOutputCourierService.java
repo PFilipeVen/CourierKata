@@ -6,5 +6,5 @@ import com.courierKata.models.OutputCourier;
 import com.courierKata.models.Parcel;
 
 public interface IOutputCourierService {
-	OutputCourier CreateOutputCourier(List<Parcel> parcels);
+	OutputCourier CreateOutputCourier(List<Parcel> parcels, Boolean speedyShipping);
 }

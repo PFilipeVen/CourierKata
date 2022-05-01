@@ -21,7 +21,7 @@ public class CourierApp {
 		parcels.add(parcelService.CreateParcel(50, 67, 5));
 		
 		OutputCourierService outputCourierService = new OutputCourierService();
-		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels);
+		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,true);
 		System.out.println(outputCourier.toString());
 	}
 

@@ -26,7 +26,6 @@ class ParcelServiceTest {
 	assertEquals(ParcelType.Medium,parcel.getType(),"Parcel type test failled");
 	assertEquals(8D, parcel.getBaseCost(),"BaseCost test failled");
 	}
-	
 	@Test
 	void testCreateParcel_ForLarge() {
 	ParcelService parcelService = new ParcelService();
@@ -35,7 +34,6 @@ class ParcelServiceTest {
 	assertEquals(ParcelType.Large,parcel.getType(),"Parcel type test failled");
 	assertEquals(15D, parcel.getBaseCost(),"BaseCost test failled");
 	}
-	
 	@Test
 	void testCreateParcel_ForXL() {
 	ParcelService parcelService = new ParcelService();

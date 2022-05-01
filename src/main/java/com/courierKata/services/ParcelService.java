@@ -36,6 +36,4 @@ public class ParcelService implements IParcelService {
 		} 
 		return currentParcel;
 	}
-
-
 }

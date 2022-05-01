@@ -10,7 +10,7 @@ import com.courierKata.models.Parcel;
 public class OutputCourierService implements IOutputCourierService {
 	
 	@Override
-	public OutputCourier CreateOutputCourier(List<Parcel> parcels) {
+	public OutputCourier CreateOutputCourier(List<Parcel> parcels, Boolean speedyShipping) {
 		OutputCourier outputCourier = new OutputCourier();
 		List<Parcel> parcelsToOutput = new ArrayList<>();
 		Double totalCostToOutput = 0D;
@@ -19,7 +19,11 @@ public class OutputCourierService implements IOutputCourierService {
 			totalCostToOutput += parcel.getBaseCost();
 		}
 		outputCourier.setParcels(parcelsToOutput);
+		
+		totalCostToOutput = speedyShipping ? totalCostToOutput*2 : totalCostToOutput;
 		outputCourier.setTotalCost(totalCostToOutput);
+		outputCourier.setSpeedyShipping(speedyShipping);
+		
 		return outputCourier;	
 	}
 
