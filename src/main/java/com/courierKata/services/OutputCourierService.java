@@ -16,7 +16,7 @@ public class OutputCourierService implements IOutputCourierService {
 		Double totalCostToOutput = 0D;
 		for (Parcel parcel : parcels) {
 			parcelsToOutput.add(parcel);
-			totalCostToOutput += parcel.getBaseCost();
+			totalCostToOutput += parcel.getParcelTotalCost();
 		}
 		outputCourier.setParcels(parcelsToOutput);
 		

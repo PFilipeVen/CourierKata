@@ -3,12 +3,14 @@ package com.courierKata.models;
 import com.courierKata.enums.ParcelType;
 
 public class Parcel {
-	 public Integer lengthCm;
-     public Integer widthCm;
-     public Integer heightCm;
-     public Double baseCost ;
-     public ParcelType type;
-//     public Double TotalCost;
+	 private Integer lengthCm;
+	 private Integer widthCm;
+	 private Integer heightCm;
+	 private Double baseCost ;
+	 private ParcelType type;
+     public Integer weightKg;
+     public Double extraWeightCost;
+     private Double parcelTotalCost ;
      
 	public Integer getLengthCm() {
 		return lengthCm;
@@ -40,4 +42,23 @@ public class Parcel {
 	public void setType(ParcelType type) {
 		this.type = type;
 	}
+	public Integer getWeightKg() {
+		return weightKg;
+	}
+	public void setWeightKg(Integer weightKg) {
+		this.weightKg = weightKg;
+	}
+	public Double getExtraWeightCost() {
+		return extraWeightCost;
+	}
+	public void setExtraWeightCost(Double extraWeightCost) {
+		this.extraWeightCost = extraWeightCost;
+	}
+	public Double getParcelTotalCost() {
+		return parcelTotalCost;
+	}
+	public void setParcelTotalCost(Double parcelTotalCost) {
+		this.parcelTotalCost = parcelTotalCost;
+	}
+	
 }
