@@ -15,11 +15,19 @@ public class CourierApp {
 		ParcelService parcelService = new ParcelService();
 		
 		// Mock request
-		parcels.add(parcelService.CreateParcel(10, 3, 20,15));
-		parcels.add(parcelService.CreateParcel(170, 5, 2,5));
-		parcels.add(parcelService.CreateParcel(7, 2, 2,3));
-		parcels.add(parcelService.CreateParcel(50, 67, 5,51));
-		
+		parcels.add(parcelService.CreateParcel(10, 3, 20,1));//8
+		parcels.add(parcelService.CreateParcel(10, 3, 20,1));//8
+		parcels.add(parcelService.CreateParcel(10, 3, 20,1));//8
+		parcels.add(parcelService.CreateParcel(170, 5, 2,1));//25
+		parcels.add(parcelService.CreateParcel(170, 5, 2,1));//25
+		parcels.add(parcelService.CreateParcel(170, 5, 2,1));//25
+		parcels.add(parcelService.CreateParcel(170, 5, 2,1));//25
+		parcels.add(parcelService.CreateParcel(7, 2, 2,1));//3
+		parcels.add(parcelService.CreateParcel(7, 2, 2,1));//3
+		parcels.add(parcelService.CreateParcel(7, 2, 2,1));//3
+		parcels.add(parcelService.CreateParcel(7, 2, 2,1));//3
+		parcels.add(parcelService.CreateParcel(50, 67, 5,20));//29
+
 		OutputCourierService outputCourierService = new OutputCourierService();
 		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,true);
 		System.out.println(outputCourier.toString());

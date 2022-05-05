@@ -7,6 +7,8 @@ public class OutputCourier {
 	private List<Parcel> parcels;
     private Double totalCost;
     private Boolean SpeedyShipping;
+    private Double totalCostBeforeDiscounts; 
+    private Integer DiscountOccurences;
     
     
 	public List<Parcel> getParcels() {
@@ -29,6 +31,20 @@ public class OutputCourier {
 		SpeedyShipping = speedyShipping;
 	}
 
+
+	public Double getTotalCostBeforeDiscounts() {
+		return totalCostBeforeDiscounts;
+	}
+	public void setTotalCostBeforeDiscounts(Double totalCostBeforeDiscounts) {
+		this.totalCostBeforeDiscounts = totalCostBeforeDiscounts;
+	}
+	public Integer getDiscountOccurences() {
+		return DiscountOccurences;
+	}
+	public void setDiscountOccurences(Integer discountOccurences) {
+		DiscountOccurences = discountOccurences;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
@@ -43,6 +59,10 @@ public class OutputCourier {
 				  str.append("SpeedyShipping: " + SpeedyShipping + "\t shipping cost added : "+ parcel.getParcelSpeedyShippingCost()+"\r\n");
 			} 
 			str.append("***************************************************\r\n");
+		}
+		
+		if (DiscountOccurences > 0) {
+			str.append("Discount Time!!, you pay " + DiscountOccurences + " less parcels!!Before discounts, the total order price was: "+ totalCostBeforeDiscounts +" \r\n");
 		}
 		str.append("Total Cost: " + totalCost);
 		return str.toString();

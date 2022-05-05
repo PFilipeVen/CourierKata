@@ -20,15 +20,15 @@ class OutputCourierServiceTest {
 		ParcelService parcelService = new ParcelService();
 		
 		// Mock request
-		parcels.add(parcelService.CreateParcel(1, 1, 1,3));
-		parcels.add(parcelService.CreateParcel(25, 25, 2,10));
-		parcels.add(parcelService.CreateParcel(88, 2, 2,30));
-		parcels.add(parcelService.CreateParcel(110, 67, 5,40));
-		parcels.add(parcelService.CreateParcel(1, 2, 3,100));
+		parcels.add(parcelService.CreateParcel(1, 1, 1,1));		//small
+		parcels.add(parcelService.CreateParcel(25, 25, 2,1));	//medium
+		parcels.add(parcelService.CreateParcel(88, 2, 2,1));	//Large
+		parcels.add(parcelService.CreateParcel(110, 67, 5,1));	//XL
+		parcels.add(parcelService.CreateParcel(1, 2, 3,51));	//Heavy
 		OutputCourierService outputCourierService = new OutputCourierService();
-		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,true);
+		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,false);
 		
-		assertEquals(428, outputCourier.getTotalCost());		
+		assertEquals(99, outputCourier.getTotalCost());		
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ class OutputCourierServiceTest {
 		OutputCourierService outputCourierService = new OutputCourierService();
 		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,true);
 		
-		assertEquals(38, outputCourier.getTotalCost());	
+		assertEquals(32, outputCourier.getTotalCost());	
 	}
 	
 	@Test
@@ -76,7 +76,7 @@ class OutputCourierServiceTest {
 		OutputCourierService outputCourierService = new OutputCourierService();
 		OutputCourier outputCourier = outputCourierService.CreateOutputCourier(parcels,false);
 		
-		assertEquals(19, outputCourier.getTotalCost());	
+		assertEquals(16, outputCourier.getTotalCost());	
 	}
 	
 }

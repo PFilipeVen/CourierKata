@@ -59,7 +59,7 @@ class ParcelServiceTest {
 	
 	@Test
 	void testParcelSpeedyShippingCostCalculator() {
-		assertEquals(10,ParcelService.parcelSpeedyShippingCostCalculator(5D));
+		assertEquals(50,ParcelService.parcelSpeedyShippingCostCalculator(50D));
 	}
 	
 	

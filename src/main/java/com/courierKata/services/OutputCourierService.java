@@ -20,10 +20,16 @@ public class OutputCourierService implements IOutputCourierService {
 			totalCostToOutput += parcel.getParcelTotalCost();
 		}
 		outputCourier.setParcels(parcelsToOutput);
-		
-		totalCostToOutput = speedyShipping ? totalCostToOutput* Constants.ParcelSpeedyShippingChangerRate : totalCostToOutput;
 		outputCourier.setTotalCost(totalCostToOutput);
 		outputCourier.setSpeedyShipping(speedyShipping);
+		
+		DiscountService discountService = new DiscountService();
+		outputCourier = discountService.possibleDiscountFinder(outputCourier);
+		
+		if (speedyShipping) {
+			outputCourier.setTotalCost(outputCourier.getTotalCost() * Constants.ParcelSpeedyShippingChangerRate);
+			outputCourier.setTotalCostBeforeDiscounts(outputCourier.getTotalCostBeforeDiscounts() * Constants.ParcelSpeedyShippingChangerRate);
+		}
 		
 		return outputCourier;	
 	}
